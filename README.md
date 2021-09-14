@@ -67,7 +67,7 @@ python articncov.py -h
 
 Este comando le dará los parametros que requiere parapoder correr todo el pipeline.
 
-```
+
 usage: articncov.py [-h] -r RUN_NAME -f FAST5 -m MIN -x MAX -a ACCURACY
                     [-g NUM_CALLERS] [-k GPU_RUNNERS_PER_DEVICE]
                     [-i CHUNKS_PER_RUNNER] [-j NUMGPUS] [-e EMAIL]
@@ -97,7 +97,7 @@ optional arguments:
   -e EMAIL, --email EMAIL
                         Si quiere que le avise por email que ha terminado todo
                         el protocolo -e = Si, valor por default = No
-```
+
 
 ## Usando parámetros por default
 
