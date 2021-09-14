@@ -54,4 +54,55 @@ Reemplace x.x.x por la version que requiera. Consulte la versión de cuda y driv
 
 7. Una  vez instalado abra el archivo config.py y remplace los  valores con los requeridos en su máquina
 8. El script envía  un email una vez el proceo haya realizado, funcioina sólo con cuentas  de gmail, es recomendable  que abra unoexclusivamente para este propósito, no use su email personal o instituciional.
-9. Si decide activar la función de envíar email una vez todo el proceso termina hay que darle autorización al correo de enviar email automáticos, para esto en el siguiente [link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NcmwjFrSP4rJSLCPYA5gs6GhVq_GuFa5RlI5i3w7fZM7vI-N36ssoEEyTcCbu4Vhe5q77aAoZQH58B9qWMlHBxdmkuxw). active la función de acceso de apps menos seguras. https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NcmwjFrSP4rJSLCPYA5gs6GhVq_GuFa5RlI5i3w7fZM7vI-N36ssoEEyTcCbu4Vhe5q77aAoZQH58B9qWMlHBxdmkuxw
+9. Si decide activar la función de envíar email una vez todo el proceso termina hay que darle autorización al correo de enviar email automáticos, para esto en el siguiente [link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NcmwjFrSP4rJSLCPYA5gs6GhVq_GuFa5RlI5i3w7fZM7vI-N36ssoEEyTcCbu4Vhe5q77aAoZQH58B9qWMlHBxdmkuxw). active la función de acceso de apps menos seguras. 
+
+
+## Correr artic unisimon
+
+Para correr artic unisimon, simplemente  en el directorio  analysis corra el siguiente comando:
+
+```
+python articncov.py -h
+```
+
+Este comando le dará los parametros que requiere parapoder correr todo el pipeline.
+
+```
+usage: articncov.py [-h] -r RUN_NAME -f FAST5 -m MIN -x MAX -a ACCURACY
+                    [-g NUM_CALLERS] [-k GPU_RUNNERS_PER_DEVICE]
+                    [-i CHUNKS_PER_RUNNER] [-j NUMGPUS] [-e EMAIL]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r RUN_NAME, --run_name RUN_NAME
+                        Nombre del proyecto
+  -f FAST5, --fast5 FAST5
+                        Path completo donde se encuentra el directorio con los
+                        archivos fast5 ej. '/home/jyosa/fast5'
+  -m MIN, --min MIN     longitud m'inima de los amplicones
+  -x MAX, --max MAX     longitud m'axima de los amplicones
+  -a ACCURACY, --accuracy ACCURACY
+                        Ejecute la basecaller de Guppy con el modo de
+                        precisi'on alta o r'apida, valores = 'fast' y 'high'
+  -g NUM_CALLERS, --num_callers NUM_CALLERS
+                        Numero de basecallers paralelos a crear, valor por
+                        default = 8
+  -k GPU_RUNNERS_PER_DEVICE, --gpu_runners_per_device GPU_RUNNERS_PER_DEVICE
+                        Etiqueta para maximizar la utilizaci'on de la GPU,
+                        valor por default = 64
+  -i CHUNKS_PER_RUNNER, --chunks_per_runner CHUNKS_PER_RUNNER
+                        Chunks m'aximos por corrida,valor por default = 256
+  -j NUMGPUS, --numGpus NUMGPUS
+                        N'umero de GPUs a utilizar, valor por default = 1
+  -e EMAIL, --email EMAIL
+                        Si quiere que le avise por email que ha terminado todo
+                        el protocolo -e = Si, valor por default = No
+```
+
+## Usando parámetros por default
+
+Para correr con  los parámetros por default simplemente escriba lo siguien en el prompt:
+
+```
+python articncov.py -h
+```
