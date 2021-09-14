@@ -1,11 +1,11 @@
 # Artic-ncov2019 Automatización
 
-Este program escrito en python le permite correr  el protocolo artic-ncov2019 completo de forma sencilla.
+Este programa escrito en python le permite correr  el protocolo artic-nov 2019 completo de forma sencilla.
 
 
 ## Antes de empezar
 
-Aates de empezar asegurese de que el ambiente artic-ncov2019 este instalado con todas las dependencias necesarias, para hacerlo realice lo siguiente:
+Antes de empezar asegúrese de que el ambiente artic-ncov2019 esté instalado con todas las dependencias necesarias, para hacerlo realice lo siguiente:
 
 1. Instale  [conda y mininiconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html).
 2. Bajar e instalar el pipeline artic-ncov2019:
@@ -50,11 +50,11 @@ $ wget GuppyBinary
 $ tar -xzvf ont-guppy_X.X.X_linux64.tar.gz
 ```
 
-Reemplace x.x.x por la version que requiera. Consulte la versión de cuda y drivers de la tarjeta  gráfica requeridos para correr guppy
+Reemplace x.x.x por la versión que requiera. Consulte la versión de cuda y drivers de la tarjeta  gráfica requeridos para correr guppy
 
 7. Una  vez instalado abra el archivo config.py y remplace los  valores con los requeridos en su máquina
-8. El script envía  un email una vez el proceo haya realizado, funcioina sólo con cuentas  de gmail, es recomendable  que abra unoexclusivamente para este propósito, no use su email personal o instituciional.
-9. Si decide activar la función de envíar email una vez todo el proceso termina hay que darle autorización al correo de enviar email automáticos, para esto en el siguiente [link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NcmwjFrSP4rJSLCPYA5gs6GhVq_GuFa5RlI5i3w7fZM7vI-N36ssoEEyTcCbu4Vhe5q77aAoZQH58B9qWMlHBxdmkuxw). active la función de acceso de apps menos seguras. 
+8. El script envía  un email una vez el proceso haya realizado, funciona sólo con cuentas  de gmail, es recomendable  que cree uno exclusivamente para este propósito, no use su email personal o institucional.
+9. Si decide activar la función de envíar email una vez todo el proceso termina hay que darle autorización al correo de enviar email automáticos, para esto en el siguiente [link](https://myaccount.google.com/lesssecureapps?pli=1&rapt=AEjHL4NcmwjFrSP4rJSLCPYA5gs6GhVq_GuFa5RlI5i3w7fZM7vI-N36ssoEEyTcCbu4Vhe5q77aAoZQH58B9qWMlHBxdmkuxw). active la función de acceso de apps menos seguras.
 
 
 ## Correr artic unisimon
@@ -65,9 +65,9 @@ Para correr artic unisimon, simplemente  en el directorio  analysis corra el sig
 python articncov.py -h
 ```
 
-Este comando le dará los parametros que requiere parapoder correr todo el pipeline.
+Este comando le dará los parámetros que requiere para poder correr todo el pipeline.
 
-
+```
 usage: articncov.py [-h] -r RUN_NAME -f FAST5 -m MIN -x MAX -a ACCURACY
                     [-g NUM_CALLERS] [-k GPU_RUNNERS_PER_DEVICE]
                     [-i CHUNKS_PER_RUNNER] [-j NUMGPUS] [-e EMAIL]
@@ -97,12 +97,52 @@ optional arguments:
   -e EMAIL, --email EMAIL
                         Si quiere que le avise por email que ha terminado todo
                         el protocolo -e = Si, valor por default = No
-
+```
 
 ## Usando parámetros por default
 
-Para correr con  los parámetros por default simplemente escriba lo siguien en el prompt:
+Artic unisimon crea un archivo comprimido con todos los datos producto del análisis
+
+Para correr con  los parámetros por default simplemente escriba lo siguiente en el prompt:
 
 ```
-python articncov.py -h
+python articncov.py -r test -f /home/juvenal/testGuppy/fast5  -m 400 -x 700 -a fast
 ```
+Esto corre todo el protocolo en una sóla GPU sin enviar un email de finalización del pipeline usando el basecalling en modo fast
+
+## Cambiando parámetros
+
+Para usarlo con más de una GPU (ej. 3)
+
+```
+python articncov.py -r test -f /home/juvenal/testGuppy/fast5  -m 400 -x 700 -a fast -j 3
+```
+
+Enviar un email una vez haya terminado todo el pipeline
+
+```
+python articncov.py -r test -f /home/juvenal/testGuppy/fast5  -m 400 -x 700 -a fast -j 3 -e Si
+```
+
+Para correr usando  el  modo  de alta precisión, en 2 GPUs y enviar un email al final
+
+```
+python articncov.py -r test -f /home/juvenal/testGuppy/fast5  -m 400 -x 700 -a high -j 2 -e Si
+```
+
+## Avanzado
+
+Para Cambiar el número de basecallers paralelos, maximizar la utilización de la GPU,  chunks máximos por corrida cambie los valores de la siguiente forma:
+
+
+
+```
+python articncov.py -r test -f /home/juvenal/testGuppy/fast5  -m 400 -x 700 -a high -j 2 -e Si -g 16 -k 128 -i 512 -k 128
+```
+Siéntase libre de generar  la mejor combinación para su arquitectura
+
+Por último y  para saber que todo funciona bien corra el artic unisimon con un set pequeño de datos, así sabe que todo está OK
+
+Si encuentra un error o piensa  que hay que agregar una característica extra escriba al correo juvenal.yosa@gmail.com
+
+##### Powered by @El_Dryosa
