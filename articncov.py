@@ -9,6 +9,7 @@ from datetime import datetime
 
 
 def articProtocol(run_name,fast5,mini,maxi,accuracy,num_callers,gpu_runners_per_device,chunks_per_runner,numGpus,email='No'):
+    start_time = datetime.now()
 
     def basecaller(fast5,run_name,accuracy,num_callers=8,gpu_runners_per_device=64,chunks_per_runner=256,numGpus=1):
         if accuracy == 'high':
@@ -41,7 +42,7 @@ fast5 + ' -s ' + run_name + ' --device ' + gpusUsed + ' -r'
         print("\nCuidado!!!!!!!!!\nEl directorio de nombre {} existe \
 este puede tener resultados previos, cambie el nombre y vuelva\
 a correr el script.\n\n".format(run_name))
-        #exit()
+        exit()
     else:
         os.mkdir(run_name)
 
@@ -78,6 +79,8 @@ barnames + ' --fast5-directory ' + fast5 + ' --sequencing-summary ' + sec_summ +
                 subprocess.call(subArticMin, shell=True)
         if len(listBarcodes) == 0:
             print("\nNo hay resultados para artic guppyplex, revise sus datos o pregunte a su bioinform'atico de confinaza!!!!\n\n")
+            emailfailtxt = "\nNo hay resultados para artic guppyplex, revise sus datos o pregunte a su bioinform'atico de confinaza!!!!\n\n"
+            emailme(emailfailtxt)
             exit()
         consen = 'cat *.consensus.fasta > my_consensus_genomes.fasta'
         subprocess.call(consen, shell=True)
@@ -92,16 +95,20 @@ barnames + ' --fast5-directory ' + fast5 + ' --sequencing-summary ' + sec_summ +
         print('\n\n##########################################################\nduraci\'o del protocolo artic para {}: {}\n\n\
 Los resultados los encuentra en: \n{}\n\
 ##########################################################\n\n'.format(run_name,end_time - start_time,res))
+        date_time = datetime.now()
+        contmail = "\nHola el Protocolo artic-ncov2019 ha finalizado en " + str(date_time) + "\n\n que tengas un excelente d'ia!!!!\n\nPowered by El_Dryosa"
+
+        
         if email == 'Si':
-            emailme()
+            emailme(contmail)
         elif email == 'si':
-            emailme()
+            emailme(contmail)
         elif email == 'No':
             print("No se neviar'a notificaci'on")
         elif email == 'no':
             print("No se neviar'a notificaci'on")
         else:
-            print("{} no es unaopci'on valida no se envira'a un emailde notificaci'on".format(email))
+            print("{} no es una opci'on valida no se envira'a un emailde notificaci'on".format(email))
 
 
 
