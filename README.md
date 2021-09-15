@@ -154,6 +154,6 @@ Siéntase libre de generar  la mejor combinación para su arquitectura
 
 Por último y  para saber que todo funciona bien corra el artic unisimon con un set pequeño de datos, así sabe que todo está OK
 
-Si encuentra un error o piensa  que hay que agregar una característica extra escriba al correo juvenal.yosa@gmail.com
+Si encuentra un error o piensa  que hay que agregar una característica extra escriba al correo juvenal.yosa@unisimonbolivar.edu.co
 
 ##### Powered by @El_Dryosa
