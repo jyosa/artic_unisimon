@@ -2,7 +2,9 @@
 
 Este programa escrito en python le permite correr  el protocolo artic-nov 2019 completo de forma sencilla. Creado para la red de vigilancia genómica Colombiana. Agradecemos a Marcela Orjuela Rodriguez, por su amable colaboración con los datos y por su ayuda resolviendo algunas dudas de la estructura de los mismos.
 
-Creado por Juvenal Yosa Reyes PhD [coder]
+Creado por:
+
+Juvenal Yosa Reyes PhD [coder]
 
 Antonio Acosta PhD líder de la iniciativa de vigilancia genómica en barranquilla
 
