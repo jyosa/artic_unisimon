@@ -5,11 +5,10 @@ from datetime import datetime
 import config
 
 
-def emailme():
+def emailme(body):
     now = datetime.now() # current date and time
     date_time = now.strftime("%m/%d/%Y, %H:%M:%S")
-    mail_content = "\nHola el Protocolo artic-ncov2019 ha finalizado en " + date_time + "\n\n que tengas un excelente d'ia!!!!\n\nPowered by El_Dryosa"
-
+    mail_content = body
     sender_address = config.envia
     sender_pass = config.passw
     receiver_address = config.recibe
